@@ -38,6 +38,20 @@ model Admin {
   @@map("admins")
 }
 
+//book model
+model Book{
+id  String @id @default(uuid())
+title String
+genre String
+publishedYear Int
+image String?
+totalCopies Int
+availableCopies Int
+ createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+   @@map("books")
+}
+
 enum UserRole {
   SUPER_ADMIN
   ADMIN
@@ -52,4 +66,8 @@ enum UserStatus {
 enum Gender {
   MALE
   FEMALE
+}
+enum PaymentStatus {
+  PAID
+  UNPAID
 }

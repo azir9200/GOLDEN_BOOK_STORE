@@ -4,6 +4,7 @@ import { BooksController } from "./books.controller";
 
 const router = express.Router();
 
+router.post("/", BooksController.insertManyIntoDB);
 router.post("/", BooksController.insertIntoDB);
 router.get("/", BooksController.getAllFromDB);
 

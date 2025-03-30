@@ -4,6 +4,20 @@ import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
 import { BookService } from "./books.service";
 
+
+const insertManyIntoDB = catchAsync(async (req: Request, res: Response) => {
+  console.log("book control", req.body);
+
+  const result = await BookService.insertManyIntoDB(req);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Books created successfully",
+    data: result,
+  });
+});
+
+
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   console.log("book control", req.body);
 
@@ -19,7 +33,7 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   console.log("book control", req.body);
   const result = await BookService.getAllFromDB();
-
+  console.log("result", result);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -76,6 +90,7 @@ const softDelete = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const BooksController = {
+  insertManyIntoDB,
   insertIntoDB,
   getAllFromDB,
   getByIdFromDB,

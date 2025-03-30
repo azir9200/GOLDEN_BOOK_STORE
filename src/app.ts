@@ -8,7 +8,10 @@ const app: Application = express();
 // ✅ Configure CORS
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [
+      "http://localhost:3000",
+      "https://car-refresh-service-87ur6gbfy-azir-uddins-projects.vercel.app",
+    ],
     credentials: true,
   })
 );
